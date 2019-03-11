@@ -1,0 +1,11 @@
+{
+  "users": [
+    { "id": 1, "name": "Andrew"}
+  ],
+  "countries": [
+    { "id": 1, "name": "Ukraine"}
+  ],
+  "user-countries": [
+
+  ]
+}
