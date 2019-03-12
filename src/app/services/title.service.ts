@@ -17,7 +17,7 @@ export class TitleService {
     }
 
     setTitle( newTitle: string) {
-      this.titleService.setTitle('RAMMFX Backoffice - '+ newTitle);
+      this.titleService.setTitle(newTitle);
     }
     getMenuTitle() {
         return this._menuTitle;

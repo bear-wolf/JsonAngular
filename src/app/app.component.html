@@ -1,68 +1,29 @@
-<td-layout>
-  <!--<td-navigation-drawer flex sidenavTitle="{{currentUser.Company}}" name="{{currentUser.Name}}" >-->
-    <!--<mat-nav-list>-->
-      <!--<a *ngFor="let item of routes" mat-list-item [tdLayoutToggle]="true" [routerLink]="item.route"><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>-->
-    <!--</mat-nav-list>-->
-    <!--<div td-navigation-drawer-menu>-->
-      <!--<mat-nav-list>-->
-        <!--<a *ngFor="let item of usermenu" mat-list-item [tdLayoutToggle]="true" [routerLink]="item.route"><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>-->
+<mat-card>
+  <mat-card-content>
+    <mat-sidenav-container fxFlexFill class="example-container">
 
-      <!--</mat-nav-list>-->
-    <!--</div>-->
-  <!--</td-navigation-drawer>-->
-  <div td-sidenav-content class="td-layout-footer pad">
-    <span class="md-caption">&copy; 2019 Angular || Json Server</span>
-  </div>
+      <!--<mat-card>-->
+        <!--<span class="navbar-brand">Test - {{titleService.getContentTitle()}}</span>-->
+      <!--</mat-card>-->
 
-  <td-layout-nav color="primary">
-    <div td-toolbar-content layout="row" layout-align="start center" flex>
-      <button mat-icon-button td-menu-button tdLayoutToggle *ngIf="userIsLogged">
-        <mat-icon>menu</mat-icon>
-      </button>
+      <mat-sidenav fxLayout="column" mode="side" opened="false">
+        <div fxLayout="column">
+          <a href="#" mat-button *ngFor="let route of routes" [innerText]="route.title"></a>
+        </div>
+      </mat-sidenav>
+      <!--<mat-sidenav-content fxFlexFill> Main content</mat-sidenav-content>-->
+    </mat-sidenav-container>
 
-      <span class="cursor-pointer">Test - {{titleService.getContentTitle()}}</span>
-      <span flex></span>
+  </mat-card-content>
+</mat-card>
 
-      <!--<a mat-icon-button matTooltip="Docs" [routerLink]="'help'" *ngIf="userIsLogged"><mat-icon>chrome_reader_mode</mat-icon></a>-->
+<mat-card [ngClass]="'content-body'">
+  <router-outlet></router-outlet>
+</mat-card>
 
-      <!--<button mat-icon-button *ngIf="userIsLogged"  >-->
-      <!--<td-notification-count [notifications]="0"><mat-icon>notifications</mat-icon></td-notification-count>-->
-      <!--</button>-->
-      <!--<button mat-icon-button *ngIf="userIsLogged" [matMenuTriggerFor]="userAccountMenu"><mat-icon>account_circle</mat-icon></button>-->
 
-      <mat-menu  #userAccountMenu="matMenu">
-        <td-menu [ngClass]="'wrap-user-account-menu'">
-          <div td-menu-header class="mat-subhead">{{currentUser.Name}}</div>
-          <mat-nav-list>
-            <a mat-list-item><mat-icon>arrow_forward_ios</mat-icon> {{currentUser.getDemoText()}}</a>
-            <a mat-list-item><mat-icon>account_circle</mat-icon> {{currentUser.Login}}</a>
-            <a *ngFor="let item of usermenu" mat-list-item [routerLink]="item.route"><mat-icon>{{item.icon}}</mat-icon> {{item.title}}</a>
-            <!--<a mat-list-item (click)="openLogoutConfirmDialog()"><mat-icon>exit_to_app</mat-icon> Logout</a>-->
-          </mat-nav-list>
-        </td-menu>
-      </mat-menu>
-
-      <mat-menu #notificationsMenu="matMenu">
-        <td-menu>
-          <div td-menu-header class="mat-subhead">Recent Activity</div>
-          <mat-nav-list dense>
-            <a mat-list-item>
-              <mat-icon mat-list-avatar>star</mat-icon>
-              <h4 mat-line [routerLink]="'entities/clientDetails/1/3'"><span class="text-wrap">Client details</span></h4>
-              <p mat-line>29.12.2017</p>
-            </a>
-          </mat-nav-list>
-          <a mat-button color="accent" [routerLink]="'/activity'" td-menu-footer>
-            View Activities
-          </a>
-        </td-menu>
-      </mat-menu>
-
-    </div>
-
-    <!-- router outlet goes here -->
-    <router-outlet></router-outlet>
-
-  </td-layout-nav>
-
-</td-layout>
+<mat-card [ngClass]="'content-footer'">
+  <mat-card-content>
+      <span class="md-caption">&copy; 2019 Angular || Json Server</span>
+  </mat-card-content>
+</mat-card>

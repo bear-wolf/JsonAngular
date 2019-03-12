@@ -1,29 +1,23 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {TitleService} from './services/title.service';
+import {MenuItem, UserMenuService} from './services/userMenu.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   title = 'jsonAngular';
-
+  public routes: MenuItem[];
   public userIsLogged: boolean = true;
 
-  usermenu: Object[] = [
-    {
-      title: 'Manage Account',
-      route: '/manageAccount',
-      icon: 'tune',
-    }
-  ];
+  constructor(public titleService: TitleService,
+              public menuService: UserMenuService){
 
+    this.titleService.setTitle('Home');
 
-  constructor(public titleService: TitleService){
-
+    this.routes = this.menuService.getTopMenu();
   }
-
-
-
 }

@@ -18,42 +18,19 @@ export class UserMenuService {
 
     private _menuItems: MenuItem[] = <MenuItem[]>[
 		    {
-		      title: 'Home',
-		      route: '/home',
-		      icon: 'home',
-		      leftMenu: [
-						{
-				      title: 'Managers',
-				      route: '/security/managers',
-							icon: 'settings_applications',
-						},
-						{
-				      title: 'Clients',
-				      route: '/entities/clients',
-				      icon: 'assessment',
-						},
-            {
-              title: 'Strategies',
-              route: '/entities/strategies',
-              icon: 'assessment',
-            },
-            {
-              title: 'Accounts',
-              route: '/entities/accounts',
-              icon: 'assessment',
-            }
-        ]},
+		      title: 'Users',
+		      route: '/users',
+		      icon: 'home'
+        },
 				{
-					title: 'Managers',
-					route: '/security/managers',
-					icon: 'settings_applications',
-					roles: ['Superuser', 'Admin']
+					title: 'Countries',
+					route: '/countries',
+					icon: 'settings_applications'
 				},
 				{
-					title: 'Clients',
-					route: '/entities/clients',
-					icon: 'assessment',
-					roles: ['Reader']
+					title: 'User Countries',
+					route: '/users-countries',
+					icon: 'assessment'
 				},
 
 		  ];
@@ -74,9 +51,8 @@ export class UserMenuService {
   ];
 
 
-    getTopMenu(manager: UserModel) {
-			if(manager)	return this._menuItems.filter( item => this.isAccessible(item, manager));
-			else return [];
+    getTopMenu() {
+			return this._menuItems;
     }
 
     getLeftSideMenu(topMenu: string, manager: UserModel) {
@@ -110,8 +86,6 @@ export interface MenuItem {
   icon: string;
 	leftMenu: MenuItem[];
 	showMenuForRoute?: string;
-	roles?: string[];
-	count?: number;
 };
 
 export interface MenuChange{
